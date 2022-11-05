@@ -1,6 +1,6 @@
 const { stdin, stdout } = process;
 const EventEmitter = require('events');
-const emmiter = new EventEmitter();
+const emitter = new EventEmitter();
 const fs = require('fs');
 const path = require('path');
 const output = fs.createWriteStream(path.join(__dirname, 'destination.txt'));
@@ -15,10 +15,10 @@ stdin.on('data', () => {})
 rl.on('line', (input) => {
   if (input !== 'exit') {
       output.write (input + '\n');
-  } else emmiter.emit('exit');
+  } else emitter.emit('end');
 });
 
-emmiter.on ('exit', () => {
+emitter.on ('end', () => {
 
   process.exit()
 

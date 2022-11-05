@@ -8,23 +8,26 @@ fs.readdir(folder_path,
   (error, files) => {
         
     if (error) {
-      console.error(error)
-    }
-    for (const file of files) {
+      console.log (error)
+    } else {
+      console.log ('----------------------------');
+      for (const file of files) {
 
-      if (file.isFile()) {
-        const obj = path.parse(file.name);
-        const name = obj.name;
-        const extname = obj.ext;
+        if (file.isFile()) {
+          const obj = path.parse(file.name);
+          const name = obj.name;
+          const extname = obj.ext;
 
-        fs.stat(path.join(__dirname, 'secret-folder', obj.base), (err, stats) => {
-          if (err) {
-            throw new Error()
-          } else {
-            const size = stats.size / 1000;
-            stdout.write (name + " - " + extname.slice(1) + " - " + size + 'kb\n');
-          }
-        })
+          fs.stat(path.join(folder_path, obj.base), (err, stats) => {
+            if (err) {
+              throw new Error()
+            } else {
+              const size = stats.size / 1000;
+              stdout.write (name + " - " + extname.slice(1) + " - " + size + 'kb\n');
+              stdout.write ('----------------------------\n');
+            }
+          })
+        }
       }
     }
   }
