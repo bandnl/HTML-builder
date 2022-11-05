@@ -3,13 +3,13 @@ const fs = require('fs');
 
 const files_copy = path.join(__dirname, 'files-copy');
 
-fs.rmSync (files_copy, { recursive: true, force: true }, (err) => {
-  if (err) throw err;
-})
+async function copyDir () {
 
-let copyDir = (function () {
+  await fs.promises.rm (files_copy, { recursive: true, force: true }, (err) => {
+    if (err) throw err;
+  })
 
-  fs.mkdir(files_copy, { recursive: true }, (err) => {
+  await fs.promises.mkdir(files_copy, { recursive: true }, (err) => {
     if (err) throw err;
   });
 
@@ -27,4 +27,6 @@ let copyDir = (function () {
 
   })
 
-})();
+};
+
+copyDir()
