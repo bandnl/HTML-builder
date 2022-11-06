@@ -10,6 +10,8 @@ const rl = readline.createInterface ({
     output: process.stdout,
 })
 
+console.log('Input your text');
+
 stdin.on('data', () => {})
 
 rl.on('line', (input) => {

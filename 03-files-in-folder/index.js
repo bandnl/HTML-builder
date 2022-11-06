@@ -22,8 +22,8 @@ fs.readdir(folder_path,
             if (err) {
               throw new Error()
             } else {
-              const size = stats.size / 1000;
-              stdout.write (name + " - " + extname.slice(1) + " - " + size + 'kb\n');
+              const size = stats.size;
+              stdout.write (name + " - " + extname.slice(1) + " - " + size + 'b\n');
               stdout.write ('----------------------------\n');
             }
           })

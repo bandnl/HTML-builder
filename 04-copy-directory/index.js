@@ -9,7 +9,7 @@ async function copyDir () {
     if (err) throw err;
   })
 
-  await fs.promises.mkdir(files_copy, { recursive: true }, (err) => {
+  fs.promises.mkdir(files_copy, { recursive: true }, (err) => {
     if (err) throw err;
   });
 
